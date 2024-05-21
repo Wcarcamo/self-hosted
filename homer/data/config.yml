@@ -1,0 +1,169 @@
+---
+# Homepage configuration
+# See https://fontawesome.com/v5/search for icons options
+
+title: "Self-Hosted"
+#subtitle: ""
+logo: "logo.png"
+# icon: "fas fa-skull-crossbones" # Optional icon
+
+header: true
+footer: false
+
+# Optional theme customization
+theme: default
+colors:
+  light:
+    highlight-primary: "#3367d6"
+    highlight-secondary: "#4285f4"
+    highlight-hover: "#5a95f5"
+    background: "#f5f5f5"
+    card-background: "#ffffff"
+    text: "#363636"
+    text-header: "#ffffff"
+    text-title: "#303030"
+    text-subtitle: "#424242"
+    card-shadow: rgba(0, 0, 0, 0.1)
+    link: "#3273dc"
+    link-hover: "#363636"
+  dark:
+    highlight-primary: "#3367d6"
+    highlight-secondary: "#4285f4"
+    highlight-hover: "#5a95f5"
+    background: "#131313"
+    card-background: "#2b2b2b"
+    text: "#eaeaea"
+    text-header: "#ffffff"
+    text-title: "#fafafa"
+    text-subtitle: "#f5f5f5"
+    card-shadow: rgba(0, 0, 0, 0.4)
+    link: "#3273dc"
+    link-hover: "#ffdd57"
+
+# Optional custom stylesheet
+stylesheet:
+  - "assets/custom.css"
+
+columns: "5"
+
+# Optional message
+#message:
+# #url: https://b4bz.io
+# style: "is-dark" # See https://bulma.io/documentation/components/message/#colors for styling options.
+# title: "Dev Environment!"
+# icon: "fa fa-flask"
+# content: "Comment out this message when moving to Production."
+
+# Optional navbar
+# links: [] # Allows for navbar (dark mode, layout, and search) without any links
+links:
+  - name: "Edit"
+    icon: "fas fa-code"
+    url: "https://codeserver.korps.dev/?folder=/config/services"
+    target: "_Blank"
+  - name: "Edit"
+    icon: "fab fa-raspberry-pi"
+    url: "http://pi4.local:8443/?folder=/config/services"
+    target: "_Blank"
+  - name: "Proxmox"
+    icon: "fas fa-times"
+    url: "http://proxmox.local:8006/"
+    target: "_blank"
+  - name: "Archived Services"
+    icon: "fas fa-file-alt"
+    url: "#archived"
+  - name: "Docs"
+    icon: "fab fa-github"
+    url: "https://github.com/bastienwirtz/homer"
+    target: "_blank" # optional html a tag target attribute
+
+# Services
+# First level array represent a group.
+# Leave only a "items" key if not using group (group name, icon & tagstyle are optional, section separation will not be displayed).
+services:
+  - name: "Applications"
+    icon: "fas fa-server"
+    items:
+      - name: "FreshRSS"
+        subtitle: "RSS Feed"
+        # logo: "assets/tools/sample.png"
+        logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/freshrss.png"
+        url: "https://freshrss.korps.dev"
+        target: "_blank"
+      - name: "Mealie"
+        subtitle: "Recipes"
+        logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/mealie.png"
+        target: "_blank"
+        url: "https://mealie.korps.dev"
+      - name: "FileBrowser"
+        subtitle: "SMB File Explorer"
+        logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/filebrowser.png"
+        url: "https://filebrowser.korps.dev"
+        target: "_blank"
+      - name: "Gitea"
+        subtitle: "Git Host"
+        logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/gitea.png"
+        url: "https://gitea.korps.dev"
+        target: "_blank"
+      - name: "Dockge"
+        subtitle: "Docker Containers"
+        logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/dockge.png"
+        url: "https://dockge.korps.dev"
+        target: "_blank"
+      - name: "Wireguard"
+        subtitle: "VPN"
+        logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/wireguard.png"
+        url: "http://pi4.local:51821"
+        target: "_blank"
+  - name: "Network"
+    icon: "fas fa-globe"
+    items:
+      - name: "Router"
+        subtitle: "TP-Link ER605"
+        logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/router.png"
+        url: "https://192.168.0.1"
+        target: "_blank"
+      - name: "Traefik"
+        subtitle: "Reverse Proxy"
+        logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/traefik.png"
+        url: "https://traefik.korps.dev"
+        target: "_blank"
+      - name: "Pi-Hole"
+        subtitle: "Big D"
+        logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/pi-hole.png"
+        url: "http://bigd.local/admin"
+        target: "_blank"
+      - name: "Pi-Hole"
+        subtitle: "Pi 4"
+        logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/pi-hole.png"
+        url: "http://pi4.local/admin"
+        target: "_blank"
+  - name: "Bookmarks"
+    icon: "fas fa-bookmark"
+    items:
+      - name: "Wiki"
+        logo: "https://avatars.githubusercontent.com/u/67437475?s=48&v=4"
+        url: "https://wcarcamo.quarto.pub"
+        target: "_blank"
+      - name: "I Love You"
+        subtitle: "Written Words of Love"
+        logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/nginx.png"
+        url: "https://iloveyou.korps.dev"
+        target: "_blank"
+      - name: "Portfolio"
+        subtitle: "Carol Lee's"
+        icon: "fas fa-heart"
+        # logo: "https://avatars.githubusercontent.com/u/67437475?s=48&v=4"
+        url: "https://cldiallo.xyz"
+        target: "_blank"
+      - name: "Pi Locator"
+        logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/raspberrypi.png"
+        subtitle: "Buy Raspberry Pi"
+        url: "https://rpilocator.com/?country=US"
+        target: "_blank"
+      - name: "Addy"
+        logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/anonaddy.png"
+        subtitle: "Annonymous Email"
+        url: "https://app.addy.io/login"
+        target: "_blank"
+        tag: "5jqkb5lw@anonaddy.me"

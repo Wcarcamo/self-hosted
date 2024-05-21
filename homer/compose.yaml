@@ -1,0 +1,21 @@
+services:
+  homer:
+    image: b4bz/homer:v23.10.1
+    container_name: homer
+    restart: unless-stopped
+    networks:
+      - traefik_proxy
+    ports:
+      - 8090:8080
+    volumes:
+      - ./data/:/www/assets
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.homer.rule=Host(`homer.korps.dev`)"
+      - "traefik.http.routers.homer.entrypoints=https"
+      - "traefik.http.routers.homer.tls=true"
+      - "traefik.http.routers.homer.tls.certresolver=cloudflare"
+
+networks:
+  traefik_proxy:
+    external: true

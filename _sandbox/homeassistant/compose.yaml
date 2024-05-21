@@ -1,0 +1,30 @@
+---
+version: "2"
+services:
+  homeassistant:
+    image: linuxserver/homeassistant:2024.3.3
+    container_name: homeassistant
+    restart: unless-stopped
+    network_mode: host
+    networks:
+      - traefik_proxy
+    ports:
+      - 8123:8123
+    environment:
+      - TZ=America/Los_Angeles # Specify a timezone to use
+      - PUID=1000 # User ID to run as
+      - PGID=1000 # Group ID to run as
+    volumes:
+      - /mnt/storage/services/homeassistant:/config # Contains all relevant configuration files.
+    devices:
+      - /dev/bus/usb/001/003:/dev/bus/usb/001/003 # For passing through USB, serial or gpio devices.
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.homeassistant.rule=Host(`homeassistant.korps.dev`)"
+      - "traefik.http.routers.homeassistant.entrypoints=https"
+      - "traefik.http.routers.homeassistant.tls.certresolver=cloudflare"
+      - "traefik.http.services.homeassistant.loadbalancer.server.port=8123"
+
+networks:
+ traefik_proxy:
+   external: true

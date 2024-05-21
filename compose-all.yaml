@@ -1,0 +1,27 @@
+########################### 
+# sudo docker compose -f compose-all.yaml up -d
+########################### NETWORKS
+# You may customize the network subnets (192.168.x.0/24) below as you please.
+networks:
+  default:
+    driver: bridge
+  traefik_proxy:
+    name: traefik_proxy
+    driver: bridge
+    # ipam: # Not using until I understand what this is
+    #   config:
+    #     - subnet: 192.168.90.0/24
+
+########################### SECRETS
+# secrets:
+#   basic_auth_credentials:
+#     file: $DOCKERDIR/secrets/basic_auth_credentials
+
+include:
+  ########################### SERVICES
+  # PREFIX hs = Home Server
+  # HOSTNAME=hs - defined in .env
+
+  # CORE
+  - ./traefik/compose.yaml
+  - ./homer/compose.yaml

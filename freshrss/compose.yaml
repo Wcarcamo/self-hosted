@@ -1,0 +1,26 @@
+services:
+  freshrss:
+    # https://hub.docker.com/r/freshrss/freshrss
+    image: lscr.io/linuxserver/freshrss:1.23.1
+    container_name: freshrss
+    restart: unless-stopped
+    networks:
+      - traefik_proxy
+    volumes:
+      - /mnt/storage/services/freshrss:/config
+    ports:
+      - 8132:80
+    environment:
+      - TZ=America/Los_Angeles
+      - PUID=1000
+      - PGID=1000
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.freshrss.rule=Host(`freshrss.korps.dev`)"
+      - "traefik.http.routers.freshrss.entrypoints=https"
+      - "traefik.http.routers.freshrss.tls.certresolver=cloudflare"
+      - "traefik.http.routers.freshrss.tls=true"
+
+networks:
+ traefik_proxy:
+   external: true

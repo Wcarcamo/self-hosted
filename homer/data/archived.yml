@@ -1,0 +1,76 @@
+---
+# Additional page configuration
+
+# Additional configurations are loaded using its file name, minus the extension, as an anchor (https://<mydashboad>#<config>). 
+# `config.yml` is still used as a base configuration, and all values here will overwrite it, so you don't have to re-defined everything
+
+
+subtitle: "Archived Page"
+
+# This overwrites message config. Setting it to empty to remove message from this page and keep it only in the main one:
+# message: ~
+
+# as we want to include a differente link here (so we can get back to home page), we need to replicate all links or they will be removed when overwriting the links field:
+links:
+  - name: "Home"
+    icon: "fas fa-home"
+    url: "#"
+  - name: "Edit"
+    icon: "fas fa-code"
+    url: "http://192.168.0.107:8443/?folder=/config"
+    target: "_Blank"
+  - name: "Docs"
+    icon: "fab fa-github"
+    url: "https://github.com/bastienwirtz/homer"
+    target: "_blank" #
+
+services:
+  - name: "Applications"
+    icon: "fas fa-cloud"
+    items:
+      - name: "MotionEye"
+        subtitle: "Surveillance Camera"
+        logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/motioneye.png"
+        url: "http://192.168.1.7"
+        target: "_blank"
+        tag: "Pi Zero"
+      - name: "Nextcloud"
+        subtitle: "Cloud Storage"
+        logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/nextcloud.png"
+        url: "http://192.168.0.125:8081"
+        target: "_blank"
+      - name: "Home Assistant"
+        subtitle: "Home Automation"
+        logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/home-assistant.png"
+        url: "http://homeassistant.local:8123"
+        target: "_blank"
+      - name: "Portainer"
+        subtitle: "Docker Containers"
+        logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/portainer.png"
+        url: "http://pi4.local:9000"
+        target: "_blank"
+      - name: "Hardware Monitor"
+        subtitle: "Docker Utilization"
+#        logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/raspberrypi.png"
+        logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/grafana.png"
+        url: "http://pi4.local:3000"
+        target: "_blank"
+  - name: "Network"
+    icon: "fas fa-globe"
+    items:
+      - name: "Router"
+        subtitle: "Netgear R6220"
+        logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/router.png"
+        url: "http://192.168.1.1"
+        target: "_blank"
+  - name: "Storage"
+    icon: "fas fa-hard-drive"
+    items:
+      - name: "Samba"
+        subtitle: "NAS"
+        logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/selfhosted-light.png"
+      - name: "Duplicati"
+        subtitle: "NAS Back-Up"
+        logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/duplicati.png"
+        url: "http://192.168.1.2:8200"
+        target: "_blank"

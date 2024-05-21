@@ -1,0 +1,29 @@
+services:
+  dockge:
+    image: louislam/dockge:1
+    restart: unless-stopped
+    networks:
+      - traefik_proxy
+    ports:
+      - 5001:5001
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /mnt/storage/services/dockge:/app/data
+      # Stacks Directory
+      # ⚠️ READ IT CAREFULLY. If you did it wrong, your data could end up writing into a WRONG PATH.
+      # ⚠️ 1. FULL path only. No relative path (MUST)
+      # ⚠️ 2. Left Stacks Path === Right Stacks Path (MUST)
+      - /home/will/self-hosted:/home/will/self-hosted
+    environment:
+      # Tell Dockge where to find the stacks
+      - DOCKGE_STACKS_DIR=/home/will/self-hosted
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.dockge-secure.entrypoints=https"
+      - "traefik.http.routers.dockge-secure.rule=Host(`dockge.korps.dev`)"
+      - "traefik.http.routers.dockge-secure.tls=true"
+      - "traefik.http.routers.dockge-secure.tls.certresolver=cloudflare"
+
+networks:
+ traefik_proxy:
+   external: true

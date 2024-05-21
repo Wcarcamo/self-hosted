@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml xmlns:frss="https://freshrss.org/opml" version="2.0">
+  <head>
+    <title>FreshRSS</title>
+    <dateCreated>Sun, 07 Jan 2024 00:24:29 +0000</dateCreated>
+  </head>
+  <body>
+    <outline text="Tech">
+      <outline text="Jeff Geerling's Blog" type="rss" xmlUrl="https://www.jeffgeerling.com/blog.xml" htmlUrl="https://www.jeffgeerling.com/" description=""/>
+      <outline text="Kopec Explains Software" type="rss" xmlUrl="https://pinecast.com/feed/kopec-explains-software" htmlUrl="http://kopec.live/" description="Every other week we make a software-related technical topic intelligible. We aim to help you develop an intuitive understanding of each subject, instead of emphasizing formal definitions. Join us as we learn about the wide world of software."/>
+      <outline text="Self-Hosted" type="rss" xmlUrl="https://feeds.fireside.fm/selfhosted/rss" htmlUrl="https://selfhosted.show/" description="Discover new software and hardware to get the best out of your network, control smart devices, and secure your data on cloud services. Self-Hosted is a chat show between Chris and Alex two long-time &quot;self-hosters&quot; who share their lessons and take you along for the journey as they learn new ones.&#10; A Jupiter Broadcasting podcast showcasing free and open source technologies you can host yourself."/>
+      <outline text="ServeTheHome" type="rss" xmlUrl="https://feeds.feedburner.com/servethehome" htmlUrl="https://www.servethehome.com/" description="Server and Workstation Reviews"/>
+    </outline>
+    <outline text="Uncategorized">
+      <outline text="FreshRSS releases" type="rss" xmlUrl="https://github.com/FreshRSS/FreshRSS/releases.atom" htmlUrl="https://github.com/FreshRSS/FreshRSS/" description="FreshRSS releases @ GitHub"/>
+    </outline>
+  </body>
+</opml>
