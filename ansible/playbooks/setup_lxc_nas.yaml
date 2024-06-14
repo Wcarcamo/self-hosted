@@ -1,0 +1,69 @@
+---
+# Thanks Jeff - https://www.jeffgeerling.com/blog/2022/ansible-playbook-upgrade-ubuntudebian-servers-and-reboot-if-needed
+- hosts: all
+  gather_facts: yes
+  remote_user: root
+  # become: yes
+
+  tasks:
+    - name: Perform a dist-upgrade.
+      ansible.builtin.apt:
+        update_cache: yes
+        upgrade: dist
+
+    - name: Install Samba
+      ansible.builtin.apt:
+        name: samba
+        state: present
+    
+    - name: Add default user with 'sudo'
+      ansible.builtin.user:
+        name: will
+        uid: 1000
+        groups: sudo, sambashare
+        shell: /bin/bash
+        createhome: yes
+        password: '' # ⚠️ Package: whois | Run: $ mkpasswd --method=sha-512
+
+    - name: Add Public Samba User
+      ansible.builtin.user:
+        name: cookie
+        uid: 1001
+        groups: sambashare
+        password: '' # ⚠️ Package: whois | Run: $ mkpasswd --method=sha-512
+        createhome: yes 
+
+    - name: Check For Existing Samba Configuration File
+      ansible.builtin.stat: 
+        path: /etc/samba/smb.conf
+      register: conf
+
+    - name: Back up Samba Configuration File
+      command: mv /etc/samba/smb.conf /etc/samba/smb.conf.bak
+      when: conf.stat.exists
+
+    - name: Get Samba Config 
+      ansible.builtin.get_url:
+        url: https://github.com/Wcarcamo/self-hosted/blob/main/_config/smb.conf
+        dest: /etc/samba/smb.conf
+        mode: '0440'
+
+    - name: Change file ownership, group and permissions
+      ansible.builtin.file:
+        path: /mnt/storage
+        owner: will
+        group: sambashare
+        mode: '2770'
+
+    # - name: Reload service httpd, in all cases
+    #   ansible.builtin.systemd_service:
+    #     name: smbd
+    #     state: reloaded
+
+    - name: Print message
+      ansible.builtin.debug:
+        msg: 'Restart Service "sudo service smbd restart"'
+
+    - name: Print message
+      ansible.builtin.debug:
+        msg: 'Set smb passwords "sudo smbpasswd -a username"'
