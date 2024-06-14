@@ -13,10 +13,10 @@ services:
       # ⚠️ READ IT CAREFULLY. If you did it wrong, your data could end up writing into a WRONG PATH.
       # ⚠️ 1. FULL path only. No relative path (MUST)
       # ⚠️ 2. Left Stacks Path === Right Stacks Path (MUST)
-      - /home/will/self-hosted:/home/will/self-hosted
+      - /home/will/self-hosted/docker_compose/lxc:/home/will/self-hosted/docker_compose/lxc
     environment:
       # Tell Dockge where to find the stacks
-      - DOCKGE_STACKS_DIR=/home/will/self-hosted
+      - DOCKGE_STACKS_DIR=/home/will/self-hosted/docker_compose/lxc
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.dockge-secure.entrypoints=https"

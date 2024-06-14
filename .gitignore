@@ -1,3 +1,2 @@
-/pihole/etc-dnsmasq.d
-/pihole/etc-pihole
-/wireguard/.data
+/docker_compose/pi/data/
+/.venv/
