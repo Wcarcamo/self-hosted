@@ -15,7 +15,7 @@ services:
       - DEFAULT_WORKSPACE=/config/services #optional
     env_file: .env
     volumes:
-      - /mnt/storage/services:/config
+      - /mnt/storage/services/codeserver:/config
       - ../:/config/services
     ports:
       - 8443:8443/tcp # Web UI
