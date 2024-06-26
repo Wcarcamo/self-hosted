@@ -1,6 +1,6 @@
 ---
 # Thanks Jeff - https://www.jeffgeerling.com/blog/2022/ansible-playbook-upgrade-ubuntudebian-servers-and-reboot-if-needed
-- hosts: all
+- hosts: nas
   gather_facts: yes
   remote_user: root
   # become: yes
@@ -16,22 +16,28 @@
         name: samba
         state: present
     
+    - name: Set up LXC Share for pve bind mount
+      ansible.builtin.group:
+        name: lxcshare
+        state: present
+        gid: 10000
+    
     - name: Add default user with 'sudo'
       ansible.builtin.user:
         name: will
         uid: 1000
-        groups: sudo, sambashare
+        groups: sudo, sambashare, lxcshare
         shell: /bin/bash
         createhome: yes
-        password: '' # ⚠️ Package: whois | Run: $ mkpasswd --method=sha-512
+        # password: '' # ⚠️ Package: whois | Run: $ mkpasswd --method=sha-512
 
     - name: Add Public Samba User
       ansible.builtin.user:
         name: cookie
         uid: 1001
-        groups: sambashare
-        password: '' # ⚠️ Package: whois | Run: $ mkpasswd --method=sha-512
-        createhome: yes 
+        groups: sambashare, lxcshare
+        createhome: no
+        # password: '' # ⚠️ Package: whois | Run: $ mkpasswd --method=sha-512
 
     - name: Check For Existing Samba Configuration File
       ansible.builtin.stat: 
@@ -44,25 +50,14 @@
 
     - name: Get Samba Config 
       ansible.builtin.get_url:
-        url: https://github.com/Wcarcamo/self-hosted/blob/main/_config/smb.conf
+        url: https://raw.githubusercontent.com/Wcarcamo/self-hosted/main/ansible/config_files/smb.conf
         dest: /etc/samba/smb.conf
         mode: '0440'
 
-    - name: Change file ownership, group and permissions
-      ansible.builtin.file:
-        path: /mnt/storage
-        owner: will
-        group: sambashare
-        mode: '2770'
-
-    # - name: Reload service httpd, in all cases
-    #   ansible.builtin.systemd_service:
-    #     name: smbd
-    #     state: reloaded
-
-    - name: Print message
-      ansible.builtin.debug:
-        msg: 'Restart Service "sudo service smbd restart"'
+    - name: Reload smbd service
+      ansible.builtin.systemd_service:
+        name: smbd
+        state: reloaded
 
     - name: Print message
       ansible.builtin.debug:

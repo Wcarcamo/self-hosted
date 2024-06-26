@@ -1,5 +1,6 @@
 - name: Quickly Test SSH connections
   hosts: all
+  # remote_user: root
   tasks:
    - name: Ping my hosts
      ansible.builtin.ping:
