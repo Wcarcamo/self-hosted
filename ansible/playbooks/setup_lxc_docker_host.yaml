@@ -1,4 +1,4 @@
-- hosts: dev
+- hosts: docker
   # become: yes
   remote_user: root
   tasks:
@@ -8,6 +8,8 @@
         name:
           - ca-certificates
           - curl
+          - git
+          - gpg
         update_cache: yes
 
     - name: add Docker GPG key
@@ -38,13 +40,18 @@
           - docker-buildx-plugin
         update_cache: yes
 
-    - name: Add default user with 'sudo'
+    - name: Set up LXC Share for pve bind mount
+      ansible.builtin.group:
+        name: lxcshare
+        state: present
+        gid: 10000
+
+    - name: Add default user with 'sudo' & 'docker' user
       ansible.builtin.user:
         name: will
         uid: 1000
-        groups: sudo, docker
+        groups: sudo, docker, lxcshare
         shell: /bin/bash
         createhome: yes
-        # Package: whois | Run: $ mkpasswd --method=sha-512
-        password: ''
+        # password: '' # ⚠️ Package: whois | Run: $ mkpasswd --method=sha-512
  
