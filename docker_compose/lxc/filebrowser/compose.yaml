@@ -13,7 +13,7 @@ services:
       - /mnt/storage/services/filebrowser/settings.json:/config/settings.json
     environment:
       - PUID=1000
-      - PGID=1000
+      - PGID=10000
     labels:
       - "traefik.enable=true"
       # HTTP      

@@ -8,7 +8,7 @@ services:
       - traefik_proxy
     environment:
       - PUID=1000
-      - PGID=1000
+      - PGID=10000
       - TZ=America/Los_Angeles
     volumes:
       - /mnt/storage/services/nginx:/config

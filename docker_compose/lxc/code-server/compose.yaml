@@ -8,7 +8,7 @@ services:
       - traefik_proxy
     environment:
       - PUID=1000
-      - PGID=1000
+      - PGID=10000
       - TZ=America/Los_Angeles
       - PASSWORD=${PASSWORD}
       - PROXY_DOMAIN=codeserver.korps.dev
@@ -16,7 +16,7 @@ services:
     env_file: .env
     volumes:
       - /mnt/storage/services/codeserver:/config
-      - ../:/config/services
+      - /home/will/self-hosted:/config/services
     ports:
       - 8443:8443/tcp # Web UI
     labels:
