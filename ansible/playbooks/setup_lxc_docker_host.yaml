@@ -1,5 +1,4 @@
-- hosts: docker
-  # become: yes
+- hosts: docker.lan
   remote_user: root
   tasks:
 

@@ -1,5 +1,5 @@
 ---
-- hosts: pve
+- hosts: proxmox.lan
   gather_facts: yes
   remote_user: root
   tasks:
@@ -27,4 +27,4 @@
         state: directory
         owner: 101000
         group: 110000
-        mode: '2770'
+        mode: '2777'
