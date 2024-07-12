@@ -1,0 +1,11 @@
+pi:
+  hosts:
+    pi4.dev:
+
+lxc:
+  hosts:
+    lxc.dev:
+
+proxmox:
+  children:
+    lxc:
