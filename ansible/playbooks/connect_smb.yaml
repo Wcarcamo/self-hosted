@@ -1,0 +1,30 @@
+- hosts: docker
+  remote_user: root
+  tasks:
+
+    - name: Install Samba Client
+      ansible.builtin.apt:
+        name: cifs-utils
+        state: present
+
+    - name: Create Samba Credentials File
+      ansible.builtin.stat: 
+        path: /etc/samba/credentials
+        mode: '0600'
+
+    - name: Create Samba Credentials File
+      ansible.builtin.stat: 
+        path: /mnt/storage
+        state: directory
+
+    - name: Mount SMB volume
+      ansible.posix.mount:
+        src: //nas.local/private
+        path: /mnt/storage
+        opts: "credentials=/etc/samba/credentials/private,rw,uid=1000,gid=1000"
+        fstype: cifs
+        state: mounted
+
+    - name: Print message
+      ansible.builtin.debug:
+        msg: 'Manually Update Credentials File and Reboot'
