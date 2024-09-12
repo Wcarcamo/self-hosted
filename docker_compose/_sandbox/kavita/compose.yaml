@@ -1,0 +1,25 @@
+services:
+  kavita:
+    image: lscr.io/linuxserver/kavita:0.8.2
+    container_name: kavita
+    restart: unless-stopped
+    networks:
+      - traefik_proxy
+    ports:
+      - 5002:5000
+    volumes:
+      - /mnt/storage/services/kavita:/config
+      - /mnt/storage/nas/Books/:/data #optional
+    environment:
+      - PUID=1000
+      - PGID=10000
+      - TZ=Etc/UTC
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.kavita.rule=Host(`kavita.korps.dev`)
+      - traefik.http.routers.kavita.entrypoints=https
+      - traefik.http.routers.kavita.tls.certresolver=cloudflare
+
+networks:
+  traefik_proxy:
+    external: true
