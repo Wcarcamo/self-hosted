@@ -11,7 +11,7 @@ services:
       - PGID=10000
       - TZ=America/Los_Angeles
     volumes:
-      - /mnt/storage/services/nginx:/config
+      - /docker/services/nginx:/config
     ports:
       - 8082:80
       - 8449:443

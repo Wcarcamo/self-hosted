@@ -13,7 +13,7 @@ services:
         limits:
           memory: 1000M
     volumes:
-      - /mnt/storage/services/mealie:/app/data/
+      - /docker/services/mealie:/app/data/
     environment:
     # Set Backend ENV Variables Here
       - ALLOW_SIGNUP=true

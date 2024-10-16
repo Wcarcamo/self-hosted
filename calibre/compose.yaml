@@ -8,8 +8,8 @@ services:
     ports:
       - 8083:8083
     volumes:
-      - /mnt/storage/services/calibre:/config
-      - /mnt/media/media/Books/calibre:/books
+      - /docker/services/calibre:/config
+      - /nas/books/calibre:/books
     environment:
       - PUID=1000
       - PGID=10000

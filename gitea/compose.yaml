@@ -10,8 +10,8 @@ services:
     depends_on:
       - gitea-db
     volumes:
-      - /mnt/storage/services/gitea/data:/var/lib/gitea
-      - /mnt/storage/services/gitea/config:/etc/gitea
+      - /docker/services/gitea/data:/var/lib/gitea
+      - /docker/services/gitea/config:/etc/gitea
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     environment:
@@ -33,7 +33,7 @@ services:
     networks:
       - traefik_proxy
     volumes:
-      - /mnt/storage/services/gitea/postgres:/var/lib/postgresql/data
+      - /docker/services/gitea/postgres:/var/lib/postgresql/data
     environment:
       - POSTGRES_USER= # user
       - POSTGRES_PASSWORD= # password
@@ -47,7 +47,7 @@ services:
   #   depends_on:
   #     - gitea-app
   #   volumes:
-  #     - /mnt/storage/services/gitea/act_runner:/data
+  #     - /docker/services/gitea/act_runner:/data
   #     - /var/run/docker.sock:/var/run/docker.sock
   #   environment:
   #     - GITEA_INSTANCE_URL=gitea.korps.dev

@@ -7,7 +7,7 @@ services:
     networks:
       - traefik_proxy
     volumes:
-      - /mnt/storage/services/freshrss:/config
+      - /docker/services/freshrss:/config
     ports:
       - 8132:80
     environment:

@@ -8,9 +8,9 @@ services:
     ports:
       - 8085:80
     volumes:
-      - /mnt/storage/nas:/srv
-      - /mnt/storage/services/filebrowser/filebrowser.db:/database/filebrowser.db
-      - /mnt/storage/services/filebrowser/settings.json:/config/settings.json
+      - /nas:/srv
+      - /docker/services/filebrowser/filebrowser.db:/database/filebrowser.db
+      - /docker/services/filebrowser/settings.json:/config/settings.json
     environment:
       - PUID=1000
       - PGID=10000

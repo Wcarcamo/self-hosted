@@ -15,7 +15,7 @@ services:
       - DEFAULT_WORKSPACE=/config/services #optional
     env_file: .env
     volumes:
-      - /mnt/storage/services/codeserver:/config
+      - /docker/services/codeserver:/config
       - /home/will/self-hosted:/config/services
     ports:
       - 8443:8443/tcp # Web UI

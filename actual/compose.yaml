@@ -7,7 +7,7 @@ services:
     ports:
       - '5006:5006'
     volumes:
-      - /mnt/storage/services/actual:/data
+      - /docker/services/actual:/data
     environment:
       - ACTUAL_TRUSTED_PROXIES=192.168.0.0/16
       # - ACTUAL_PORT=5006
