@@ -39,8 +39,8 @@ services:
     volumes:
       - /docker/services/paperless-ngx/data:/usr/src/paperless/data
       - /docker/services/paperless-ngx/media:/usr/src/paperless/media
-      - /docker/services/paperless/export:/usr/src/paperless/export
-      - /docker/services/paperless/consume:/usr/src/paperless/consume
+      - /nas/documents/paperless/export:/usr/src/paperless/export
+      - /nas/documents/paperless/consume:/usr/src/paperless/consume
     env_file: .env
     environment:
       PAPERLESS_REDIS: redis://broker:6379
