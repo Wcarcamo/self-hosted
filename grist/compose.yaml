@@ -1,0 +1,7 @@
+services:
+  grist:
+    image: gristlabs/grist:1.2.1
+    volumes:
+      - /nas/documents/grist:/persist
+    ports:
+      - 8484:8484
