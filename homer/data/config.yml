@@ -58,10 +58,6 @@ columns: "5"
 # links: [] # Allows for navbar (dark mode, layout, and search) without any links
 links:
   - name: "Edit"
-    icon: "fas fa-code"
-    url: "https://codeserver.korps.dev/?folder=/config/services"
-    target: "_Blank"
-  - name: "Edit"
     icon: "fab fa-raspberry-pi"
     url: "http://pi4.lan:8443/?folder=/config/services"
     target: "_Blank"
