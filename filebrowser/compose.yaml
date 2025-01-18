@@ -4,7 +4,7 @@ services:
     image: filebrowser/filebrowser:v2.30.0
     restart: unless-stopped
     networks:
-      - traefik_proxy
+      - reverse_proxy
     ports:
       - 8085:80
     volumes:
@@ -14,20 +14,7 @@ services:
     environment:
       - PUID=1000
       - PGID=10000
-    labels:
-      - "traefik.enable=true"
-      # HTTP      
-      - "traefik.http.routers.filebrowser.entrypoints=http"
-      - "traefik.http.routers.filebrowser.rule=Host(`filebrowser.korps.dev`)"
-      - "traefik.http.middlewares.https-redirect.redirectscheme.scheme=https"
-      - "traefik.http.routers.filebrowser.middlewares=https-redirect"
-      # HTTPS
-      - "traefik.http.routers.filebrowser-secure.rule=Host(`filebrowser.korps.dev`)"
-      - "traefik.http.routers.filebrowser-secure.entrypoints=https"
-      - "traefik.http.routers.filebrowser-secure.tls.certresolver=cloudflare"
-      - "traefik.http.routers.filebrowser-secure.tls=true"
-
 
 networks:
- traefik_proxy:
+ reverse_proxy:
    external: true

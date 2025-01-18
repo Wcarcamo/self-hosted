@@ -5,7 +5,7 @@ services:
     container_name: nginx
     restart: unless-stopped
     networks:
-      - traefik_proxy
+      - reverse_proxy
     environment:
       - PUID=1000
       - PGID=10000
@@ -15,13 +15,7 @@ services:
     ports:
       - 8082:80
       - 8449:443
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.nginx.rule=Host(`iloveyou.korps.dev`)"
-      - "traefik.http.routers.nginx.entrypoints=https"
-      - "traefik.http.routers.nginx.tls.certresolver=cloudflare"
-      - "traefik.http.routers.nginx.tls=true"
 
 networks:
-  traefik_proxy:
+  reverse_proxy:
     external: true

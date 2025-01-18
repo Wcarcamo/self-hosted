@@ -4,7 +4,7 @@ services:
     container_name: calibre-web
     restart: unless-stopped
     networks:
-      - traefik_proxy
+      - reverse_proxy
     ports:
       - 8083:8083
     volumes:
@@ -16,12 +16,7 @@ services:
       - TZ=America/Los_Angeles
       # - DOCKER_MODS=linuxserver/mods:universal-calibre #optional
       # - OAUTHLIB_RELAX_TOKEN_SCOPE=1 #optional
-    labels:
-      - traefik.enable=true
-      - traefik.http.routers.calibre.rule=Host(`calibre.korps.dev`)
-      - traefik.http.routers.calibre.entrypoints=https
-      - traefik.http.routers.calibre.tls.certresolver=cloudflare
 
 networks:
-  traefik_proxy:
+  reverse_proxy:
     external: true

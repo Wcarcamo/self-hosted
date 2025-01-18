@@ -1,9 +1,10 @@
 services:
   dockge:
     image: louislam/dockge:1
+    container_name: dockge
     restart: unless-stopped
     networks:
-      - traefik_proxy
+      - reverse_proxy
     ports:
       - 5001:5001
     volumes:
@@ -17,13 +18,7 @@ services:
     environment:
       # Tell Dockge where to find the stacks
       - DOCKGE_STACKS_DIR=/home/will/self-hosted/
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.dockge-secure.entrypoints=https"
-      - "traefik.http.routers.dockge-secure.rule=Host(`dockge.korps.dev`)"
-      - "traefik.http.routers.dockge-secure.tls=true"
-      - "traefik.http.routers.dockge-secure.tls.certresolver=cloudflare"
 
 networks:
- traefik_proxy:
+ reverse_proxy:
    external: true
