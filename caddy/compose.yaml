@@ -1,0 +1,48 @@
+services:
+  caddy:
+    build: .
+    restart: unless-stopped
+    container_name: caddy
+    networks:
+      - reverse_proxy
+    depends_on:
+      - tailscale
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+      - /docker/services/tailscale/tmp/tailscaled.sock:/var/run/tailscale/tailscaled.sock
+    env_file:
+      - .env
+
+  tailscale:
+    container_name: tailscaled
+    hostname: big-caddy
+    image: tailscale/tailscale:latest
+    network_mode: "host"
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    devices:  
+      - /dev/net/tun:/dev/net/tun
+    volumes:
+      - /docker/services/tailscale/varlib:/var/lib
+      - /docker/services/tailscale/tmp:/tmp
+    environment:
+      - TS_STATE_DIR=/var/lib/tailscale
+      - TS_EXTRA_ARGS=--advertise-tags=tag:container
+    restart: unless-stopped
+
+volumes:
+  caddy_data:
+  caddy_config:
+
+networks:
+  reverse_proxy:
+    external: true

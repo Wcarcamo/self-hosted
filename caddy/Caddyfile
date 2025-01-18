@@ -1,0 +1,81 @@
+(cloudflare) {
+    tls {
+        dns cloudflare {$CF_API_TOKEN}
+    }
+}
+
+*.korps.dev {
+    @actual host actual.korps.dev
+    @calibre host calibre.korps.dev
+    @dockge host dockge.korps.dev
+    @filebrowser host filebrowser.korps.dev
+    @freshrss host freshrss.korps.dev
+    @homer host homer.korps.dev
+    @immich host immich.korps.dev
+    @mealie host mealie.korps.dev
+    @myspeed host myspeed.korps.dev
+    @nginx host iloveyou.korps.dev
+    @paperless host paperless.korps.dev
+    
+    @big-pve host big-pve.korps.dev
+    @lil-pve host lil-pve.korps.dev
+
+    handle @actual {
+        reverse_proxy actual:5006
+    }
+    handle @calibre {
+        reverse_proxy calibre-web:8083
+    }
+    handle @dockge {
+        reverse_proxy dockge:5001
+    }
+    handle @filebrowser {
+        reverse_proxy filebrowser:80
+    }
+    handle @freshrss {
+        reverse_proxy freshrss:80
+    }
+    handle @homer {
+        reverse_proxy homer:8080
+    }
+    handle @immich {
+        reverse_proxy immich:2283
+    }
+    handle @mealie {
+        reverse_proxy mealie:9000
+    }
+    handle @myspeed {
+        reverse_proxy myspeed:5216
+    }
+    handle @nginx {
+        reverse_proxy nginx:80
+    }
+    handle @paperless {
+        reverse_proxy paperless:8000
+    }
+
+    handle @big-pve {
+        reverse_proxy 192.168.0.199:8006 {
+            transport http {
+                tls_insecure_skip_verify
+            }
+            header_up Host {host}
+            header_up X-Real-IP {remote}
+            header_up Connection "upgrade"
+            header_up Upgrade {>Upgrade}
+        }
+    }
+    handle @lil-pve {
+        reverse_proxy 192.168.0.198:8006 {
+            transport http {
+                tls_insecure_skip_verify
+            }
+            header_up Host {host}
+            header_up X-Real-IP {remote}
+            header_up Connection "upgrade"
+            header_up Upgrade {>Upgrade}
+        }
+    }
+    
+    import cloudflare
+}

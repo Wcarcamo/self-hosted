@@ -4,17 +4,12 @@ services:
     container_name: MySpeed
     restart: unless-stopped
     networks:
-      - traefik_proxy
+      - reverse_proxy
     ports:
         - 5216:5216
     volumes:
         - /docker/services/myspeed:/myspeed/data
-    labels:
-      - traefik.enable=true
-      - traefik.http.routers.myspeed.rule=Host(`myspeed.korps.dev`)
-      - traefik.http.routers.myspeed.entrypoints=https
-      - traefik.http.routers.myspeed.tls.certresolver=cloudflare
 
 networks:
-  traefik_proxy:
+  reverse_proxy:
     external: true
