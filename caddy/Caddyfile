@@ -51,7 +51,13 @@
         reverse_proxy nginx:80
     }
     handle @paperless {
-        reverse_proxy paperless:8000
+        encode gzip
+        reverse_proxy paperless:8000 {
+            header_up X-Forwarded-Proto {scheme}
+            header_up X-Real-IP {remote}
+            header_up X-Forwarded-For {remote}
+            header_down Referrer-Policy "strict-origin-when-cross-origin"
+        }
     }
 
     handle @big-pve {
