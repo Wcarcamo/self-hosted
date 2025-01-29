@@ -1,0 +1,94 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/services/
+
+- Applications:
+    - FreshRSS:8132:
+        href: https://freshrss.korps.dev
+        description: RSS Feed
+        icon: freshrss.png
+        server: big-docker
+        container: freshrss
+    - Calibre-Web:8083:
+        href: https://calibre.korps.dev
+        description: eBooks
+        icon: calibre-web.png
+        server: big-docker
+        container: calibre-web
+    - Immich:2283:
+        href: https://immich.korps.dev
+        description: Photo Management
+        icon: immich.png
+        server: big-docker
+        container: immich
+    - Actual Budget:5006:
+        href: https://actual.korps.dev
+        description: Finances
+        icon: actual-budget.png
+        server: big-docker
+        container: actual
+    - Mealie:9925:
+        href: https://mealie.korps.dev
+        description: Recipes
+        icon: mealie.png
+        server: big-docker
+        container: mealie
+    - Filebrowser:8085:
+        href: https://filebrowser.korps.dev
+        description: SMB File Explorer
+        icon: filebrowser.png
+        server: big-docker
+        container: filebrowser
+    - Paperless-ngx:8000:
+        href: https://paperless.korps.dev
+        description: Document Management
+        icon: paperless-ngx.png
+        server: big-docker
+        container: paperless
+    - MySpeed:5216:
+        href: https://myspeed.korps.dev
+        description: Internet Speed Log
+        icon: mealie.png
+        server: big-docker
+        container: MySpeed
+    - Dockge:5001:
+        href: https://dockge.korps.dev
+        description: Docker Containers
+        icon: dockge.png
+        server: big-docker
+        container: dockge
+
+- Network:
+    - Omada:
+        href: https://omada.lild.lan:8043
+        description: SDN
+        icon: omada.png
+    - Router:
+        href: https://192.168.0.1
+        description: TP-Link ER605
+    - Tailscale:
+        href: https://login.tailscale.com/admin/machines
+        description: Tailnet Admin Console
+        icon: tailscale.png
+    - Caddy:
+        href: https://caddy.lild.lan
+        description: Reverse Proxy
+        icon: caddy.png
+    - Pi-Hole:
+        href: http://pihole.bigd.lan/admin
+        description: Ad Block DNS
+        icon: pi-hole.png
+    - Pi-Hole:
+        href: http://pi4.lan/admin
+        description: Ad Block DNS
+        icon: pi-hole.png
+
+- Servers:
+    - Big Proxmox:8006:
+        href: https://big-pve.korps.dev
+        description: PVE Host
+        icon: proxmox.png
+    - Lil Proxmox:8006:
+        href: https://lil-pve.korps.dev
+        description: PVE Host
+        icon: proxmox.png

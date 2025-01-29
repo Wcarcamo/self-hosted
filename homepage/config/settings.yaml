@@ -1,0 +1,20 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/settings/
+
+# providers:
+#   openweathermap: openweathermapapikey
+#   weatherapi: weatherapiapikey
+
+layout:
+    Applications:
+        style: row
+        columns: 6
+    Network:
+        style: row
+        columns: 6
+    Servers:
+        style: row
+        columns: 2
+
+color: neutral

@@ -11,6 +11,7 @@
     @filebrowser host filebrowser.korps.dev
     @freshrss host freshrss.korps.dev
     @homer host homer.korps.dev
+    @homepage host homepage.korps.dev
     @immich host immich.korps.dev
     @mealie host mealie.korps.dev
     @myspeed host myspeed.korps.dev
@@ -37,6 +38,9 @@
     }
     handle @homer {
         reverse_proxy homer:8080
+    }
+    handle @homepage {
+        reverse_proxy homepage:3000
     }
     handle @immich {
         reverse_proxy immich:2283

@@ -1,0 +1,22 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/bookmarks
+
+- Will:
+    - Wiki:
+        - icon: https://avatars.githubusercontent.com/u/67437475?s=48&v=4
+          href: https://wcarcamo.quarto.pub
+    - todoist:
+        - icon: todoist.png
+          href: https://app.todoist.com/app/inbox
+    - Addy:
+        - icon: anonaddy.png
+          href: https://app.addy.io/login
+
+- Carol Lee:
+    - I Love You:
+        - icon: mdi-heart-#ff0000
+          href: https://iloveyou.korps.dev
+    - Portfolio:
+        - icon: mdi-book-open-variant-#ffffff
+          href: https://cldiallo.xyz
