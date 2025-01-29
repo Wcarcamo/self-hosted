@@ -51,12 +51,6 @@
         icon: mealie.png
         server: big-docker
         container: MySpeed
-    - Dockge:5001:
-        href: https://dockge.korps.dev
-        description: Docker Containers
-        icon: dockge.png
-        server: big-docker
-        container: dockge
 
 - Network:
     - Omada:
