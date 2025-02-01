@@ -9,12 +9,12 @@
         icon: freshrss.png
         server: big-docker
         container: freshrss
-    - Calibre-Web:8083:
-        href: https://calibre.korps.dev
-        description: eBooks
-        icon: calibre-web.png
+    - Vikunja:3456:
+        href: https://todo.korps.dev
+        description: Todo/Task Board
+        icon: vikunja.png
         server: big-docker
-        container: calibre-web
+        container: vikunja
     - Immich:2283:
         href: https://immich.korps.dev
         description: Photo Management
@@ -33,12 +33,6 @@
         icon: mealie.png
         server: big-docker
         container: mealie
-    - Filebrowser:8085:
-        href: https://filebrowser.korps.dev
-        description: SMB File Explorer
-        icon: filebrowser.png
-        server: big-docker
-        container: filebrowser
     - Paperless-ngx:8000:
         href: https://paperless.korps.dev
         description: Document Management
@@ -51,6 +45,18 @@
         icon: mealie.png
         server: big-docker
         container: MySpeed
+    - Calibre-Web:8083:
+        href: https://calibre.korps.dev
+        description: eBooks
+        icon: calibre-web.png
+        server: big-docker
+        container: calibre-web
+    - Filebrowser:8085:
+        href: https://filebrowser.korps.dev
+        description: SMB File Explorer
+        icon: filebrowser.png
+        server: big-docker
+        container: filebrowser
 
 - Network:
     - Omada:
