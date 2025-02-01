@@ -15,6 +15,7 @@
     @myspeed host myspeed.korps.dev
     @nginx host iloveyou.korps.dev
     @paperless host paperless.korps.dev
+    @vikunja host todo.korps.dev
     
     @big-pve host big-pve.korps.dev
     @lil-pve host lil-pve.korps.dev
@@ -25,17 +26,11 @@
     handle @calibre {
         reverse_proxy calibre-web:8083
     }
-    handle @dockge {
-        reverse_proxy dockge:5001
-    }
     handle @filebrowser {
         reverse_proxy filebrowser:80
     }
     handle @freshrss {
         reverse_proxy freshrss:80
-    }
-    handle @homer {
-        reverse_proxy homer:8080
     }
     handle @homepage {
         reverse_proxy homepage:3000
@@ -55,11 +50,12 @@
     handle @paperless {
         encode gzip
         reverse_proxy paperless:8000 {
-            header_up X-Forwarded-Proto {scheme}
             header_up X-Real-IP {remote}
-            header_up X-Forwarded-For {remote}
             header_down Referrer-Policy "strict-origin-when-cross-origin"
         }
+    }
+    handle @vikunja {
+        reverse_proxy vikunja:3456
     }
 
     handle @big-pve {
