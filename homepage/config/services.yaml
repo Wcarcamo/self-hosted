@@ -33,16 +33,10 @@
         icon: mealie.png
         server: big-docker
         container: mealie
-    - Paperless-ngx:8000:
-        href: https://paperless.korps.dev
-        description: Document Management
-        icon: paperless-ngx.png
-        server: big-docker
-        container: paperless
     - MySpeed:5216:
         href: https://myspeed.korps.dev
         description: Internet Speed Log
-        icon: mealie.png
+        icon: myspeed.png
         server: big-docker
         container: MySpeed
     - Calibre-Web:8083:

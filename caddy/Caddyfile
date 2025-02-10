@@ -14,7 +14,6 @@
     @mealie host mealie.korps.dev
     @myspeed host myspeed.korps.dev
     @nginx host iloveyou.korps.dev
-    @paperless host paperless.korps.dev
     @vikunja host todo.korps.dev
     
     @big-pve host big-pve.korps.dev
@@ -46,13 +45,6 @@
     }
     handle @nginx {
         reverse_proxy nginx:80
-    }
-    handle @paperless {
-        encode gzip
-        reverse_proxy paperless:8000 {
-            header_up X-Real-IP {remote}
-            header_down Referrer-Policy "strict-origin-when-cross-origin"
-        }
     }
     handle @vikunja {
         reverse_proxy vikunja:3456
