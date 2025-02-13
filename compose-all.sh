@@ -23,5 +23,4 @@ docker compose -f homepage/compose.yaml $process
 docker compose -f immich/compose.yaml $process
 docker compose -f mealie/compose.yaml $process
 docker compose -f myspeed/compose.yaml $process
-docker compose -f nginx/compose.yaml $process
 docker compose -f vikunja/compose.yaml $process
