@@ -6,6 +6,7 @@
 
 *.korps.dev {
     @actual host actual.korps.dev
+    @caddy host iloveyou.korps.dev
     @calibre host calibre.korps.dev
     @filebrowser host filebrowser.korps.dev
     @freshrss host freshrss.korps.dev
@@ -13,7 +14,6 @@
     @immich host immich.korps.dev
     @mealie host mealie.korps.dev
     @myspeed host myspeed.korps.dev
-    @nginx host iloveyou.korps.dev
     @vikunja host todo.korps.dev
     
     @big-pve host big-pve.korps.dev
@@ -21,6 +21,11 @@
 
     handle @actual {
         reverse_proxy actual:5006
+    }
+    handle @caddy {
+            root * /srv
+            file_server
+            encode gzip
     }
     handle @calibre {
         reverse_proxy calibre-web:8083
@@ -42,9 +47,6 @@
     }
     handle @myspeed {
         reverse_proxy myspeed:5216
-    }
-    handle @nginx {
-        reverse_proxy nginx:80
     }
     handle @vikunja {
         reverse_proxy vikunja:3456
